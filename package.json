@@ -1,0 +1,19 @@
+{
+  "name": "shinraguard",
+  "version": "1.0.0",
+  "description": "ShinraGuard - Roblox Lua Script Obfuscator & Protector",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "scripts": {
+    "install-all": "npm install && npm install -w backend && npm install -w frontend",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "predeploy": "cd backend && npm ci --production"
+  }
+}
