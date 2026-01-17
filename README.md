@@ -37,7 +37,13 @@ A professional-grade script obfuscation and protection system for Roblox Lua scr
 
 ## 🔧 Installation
 
-### Docker (Recommended)
+### 🚀 Deploy on Koyeb (Recommended)
+
+**Fast deployment with auto-scaling, SSL, and CDN included!**
+
+See [QUICK_START.md](QUICK_START.md) for 5-minute setup or [KOYEB_ES.md](KOYEB_ES.md) for detailed guide.
+
+### Docker (Recommended for Local)
 
 ```bash
 docker-compose up -d
@@ -66,6 +72,9 @@ npm start
 
 - [Backend Documentation](docs/README.md)
 - [API Reference](docs/API_REFERENCE.md)
+- [Koyeb Deployment](QUICK_START.md) ⭐ **Start here for production**
+- [Complete Koyeb Guide (Spanish)](KOYEB_ES.md)
+- [Setup Verification](SETUP_COMPLETE.md)
 
 ## 💳 Pricing
 

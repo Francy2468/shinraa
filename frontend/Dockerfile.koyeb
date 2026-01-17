@@ -1,0 +1,35 @@
+# Build stage
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+# Set build env
+ENV CI=false
+ENV REACT_APP_API_URL=${REACT_APP_API_URL:-https://api.shinraguard.koyeb.app}
+
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install serve to run the SPA
+RUN npm install -g serve
+
+# Copy built application
+COPY --from=builder /app/build ./build
+
+ENV PORT=3000
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+
+CMD ["serve", "-s", "build", "-l", "3000"]

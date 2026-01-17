@@ -1,0 +1,37 @@
+name: shinraguard
+services:
+  - name: backend
+    git:
+      repo: https://github.com/YOUR_USERNAME/shinraa
+      branch: main
+    buildCommand: cd backend && npm install
+    runCommand: node backend/server.js
+    ports:
+      - protocol: http
+        port: 5000
+    env:
+      - key: MONGODB_URI
+        value: mongodb+srv://USERNAME:PASSWORD@cluster.mongodb.net/shinraguard
+      - key: JWT_SECRET
+        value: your_jwt_secret_key_here
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: FRONTEND_URL
+        value: https://shinraguard.koyeb.app
+  
+  - name: frontend
+    git:
+      repo: https://github.com/YOUR_USERNAME/shinraa
+      branch: main
+    buildCommand: cd frontend && npm install && npm run build
+    runCommand: npm serve -s build -l 3000
+    ports:
+      - protocol: http
+        port: 3000
+    env:
+      - key: REACT_APP_API_URL
+        value: https://shinraguard-backend.koyeb.app/api
+      - key: CI
+        value: "false"

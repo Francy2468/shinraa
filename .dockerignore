@@ -1,0 +1,20 @@
+# Build context: /
+# Ignore patterns for faster builds
+node_modules/
+dist/
+build/
+.git/
+.gitignore
+.env
+.env.*
+*.log
+.DS_Store
+coverage/
+.nyc_output/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.next/
+out/
